@@ -1,0 +1,68 @@
+<app-menu></app-menu>
+<div *ngIf="" class="spinner">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+<div class="container">
+  <div class="header-container">
+    <h2 class="condominios-title">Academia Modelo</h2>
+    <p class="sub-titulo">Academia Modelo</p>
+  </div>
+  <div class="header-container">
+  </div>
+
+  <div class="content-container">
+    <div class="card clientes" (click)="irParaClientes()">
+      <div class="card-inside">
+        <p>Clientes</p>
+        <div class="text-icon">
+          <!-- <p>{{ totalClientes }}</p> -->
+          <p>{{''}}</p>
+          <button mat-button class="button-container"(click)="irParaClientes()">
+            <fa-icon
+              style="cursor: pointer;color: #F7C325;"
+              size="lg"
+              class="search-icon"
+              [icon]="userFriends"
+            ></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card notas" (click)="irParaBuscadorNotas()">
+      <div class="card-inside">
+        <p>Buscador de Notas</p>
+        <div class="text-icon">
+          <!-- <p>{{ totalNotas }}</p> -->
+          <p>{{''}}</p>
+          <button mat-button class="button-container"(click)="irParaBuscadorNotas()">
+            <fa-icon
+              style="cursor: pointer;color: #1c1c1c;"
+              size="lg"
+              class="search-icon"
+              [icon]="searchIcon"
+            ></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-container">
+      <div class="card clientes" (click)="irParaProcessoDeCaptura()">
+        <div class="card-inside">
+          <p>Configurações</p>
+          <div class="text-icon">
+            <p>{{''}}</p>
+            <button mat-button class="button-container"(click)="irParaProcessoDeCaptura()">
+              <fa-icon
+                style="cursor: pointer;color: #F7C325;"
+                size="lg"
+                class="search-icon"
+                [icon]="configIcon"
+              ></fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+  </div>
+

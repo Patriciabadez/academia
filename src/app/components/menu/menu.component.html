@@ -1,0 +1,20 @@
+<div class="menu" [ngClass]="{'special-color': telaAtual === 'home' || telaAtual === 'clientes'}">
+
+  <div class="version">
+    <p>Versão: {{ version }}</p>
+  </div>
+
+  <div class="logo">
+    <img class="logo-image" src="logo-dark.svg" alt="logo da empresa" (click)="irParaHome()">
+    <div class="buttons">
+    </div>
+  </div>
+
+  <div class="user">
+    <p style="font-weight: 900; color: #5D5E5D">{{ username }} -</p>
+    <p style="color: #F7C325;">{{ loggedInUserEmail }}</p>
+  </div>
+  <button mat-icon-button (click)="logout()" aria-label="Logout">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+</div>
