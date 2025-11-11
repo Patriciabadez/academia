@@ -1,0 +1,102 @@
+
+<div class="container">
+  <!-- Cadastro -->
+  <mat-card class="card">
+    <mat-card-title>Cadastro de Usuário</mat-card-title>
+
+    <form (ngSubmit)="cadastrarUsuario()" [formGroup]="formUsuario" class="formulario">
+      <div class="linha">
+        <mat-form-field appearance="outline" class="campo">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="nome" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="campo">
+          <mat-label>Nome de usuário</mat-label>
+          <input matInput formControlName="username" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="campo">
+          <mat-label>Código</mat-label>
+          <input matInput formControlName="codigo" />
+        </mat-form-field>
+      </div>
+
+      <div class="linha">
+        <mat-form-field appearance="outline" class="campo">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="campo">
+          <mat-label>Função</mat-label>
+          <mat-select formControlName="funcao" required>
+            <mat-option value="administrador">Administrador</mat-option>
+            <mat-option value="aluno">Aluno</mat-option>
+            <mat-option value="funcionario">Funcionário</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="linha">
+        <mat-form-field appearance="outline" class="campo">
+          <mat-label>Senha</mat-label>
+          <input matInput type="password" formControlName="senha" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="campo">
+          <mat-label>Confirmar Senha</mat-label>
+          <input matInput type="password" formControlName="confirmarSenha" required />
+        </mat-form-field>
+      </div>
+
+      <button mat-flat-button color="primary" class="botao" type="submit" [disabled]="formUsuario.invalid">
+        <mat-icon>person_add</mat-icon>
+        Cadastrar Usuário
+      </button>
+    </form>
+  </mat-card>
+
+  <!-- Listagem -->
+  <mat-card class="card">
+    <mat-card-title>Usuários</mat-card-title>
+
+    <table mat-table [dataSource]="usuarios" class="tabela" matSort>
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
+        <td mat-cell *matCellDef="let user">{{ user.nome }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef>Usuário</th>
+        <td mat-cell *matCellDef="let user">{{ user.username }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let user">{{ user.email }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="codigo">
+        <th mat-header-cell *matHeaderCellDef>Código</th>
+        <td mat-cell *matCellDef="let user">{{ user.codigo || '-' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="funcao">
+        <th mat-header-cell *matHeaderCellDef>Função</th>
+        <td mat-cell *matCellDef="let user">{{ user.funcao | titlecase }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="ativo">
+        <th mat-header-cell *matHeaderCellDef>Ativo?</th>
+        <td mat-cell *matCellDef="let user">
+          <mat-icon color="primary" *ngIf="user.ativo">check_circle</mat-icon>
+          <mat-icon color="warn" *ngIf="!user.ativo">cancel</mat-icon>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+      <tr mat-row *matRowDef="let row; columns: colunas"></tr>
+    </table>
+  </mat-card>
+</div>

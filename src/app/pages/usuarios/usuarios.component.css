@@ -1,0 +1,58 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 20px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Card do formulário */
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid #D4AF37;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.linha {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.campo {
+  flex: 1;
+  min-width: 220px;
+}
+
+.botao {
+  align-self: flex-end;
+  margin-top: 16px;
+}
+
+button.mat-raised-button {
+  background-color: #D4AF37;
+  color: #fff;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+button.mat-raised-button:hover {
+  background-color: #b9962f;
+}
+
+/* Tabela */
+.tabela {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}

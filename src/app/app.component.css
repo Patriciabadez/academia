@@ -1,4 +1,83 @@
-.custom-toast {
+/* .custom-toast {
   padding: 20px;
   margin: 10px;
+} */
+.sidenav-container {
+  height: 100vh;
+}
+
+.sidenav  {
+  width: 220px;
+  background: #222;
+  color: #fff;
+}
+
+.sidenav .logo {
+  padding: 16px;
+  text-align: center;
+  border-bottom: 1px solid #d4af375d;
+
+}
+
+.mat-nav-list .mat-list-item {
+  color: #fff;
+}
+
+.mat-nav-list .mat-list-item .mat-icon {
+  margin-right: 12px;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #111;
+}
+
+.topbar .menu-button {
+  color: #fff;
+}
+
+.topbar .topbar-title {
+  margin-left: 8px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.content {
+  padding: 20px;
+  background: #f7f7f7;
+  min-height: calc(100vh - 64px);
+}
+
+.menu-item {
+  color: #D4AF37 !important;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.menu-item mat-icon {
+  color: #D4AF37;
+  margin-right: 10px;
+  font-size: 22px;
+}
+
+.menu-item span {
+  color: #D4AF37;
+}
+
+.menu-item:hover {
+  background-color: rgba(212, 175, 55, 0.1);
+  border-left: 3px solid #D4AF37;
+}
+
+.menu-item.active {
+  background-color: rgba(212, 175, 55, 0.2);
+  border-left: 4px solid #D4AF37;
 }

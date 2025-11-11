@@ -32,7 +32,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
-import { MenuComponent } from './components/menu/menu.component';
 
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -43,15 +42,18 @@ import { MessageService } from 'primeng/api';
 import { PaginatorPtBr } from '../paginator-pt-br';
 import { CurrencyPipe, DatePipe, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent,
     LoginComponent,
     HomeComponent,
+    UsuariosComponent,
+    MenuComponent,
 
 
   ],
@@ -90,7 +92,8 @@ registerLocaleData(localePt, 'pt-BR');
     FontAwesomeModule,
     ReactiveFormsModule,
     CurrencyPipe,
-    MatRadioModule
+    MatRadioModule,
+    ToastModule
   ],
 
   providers: [
