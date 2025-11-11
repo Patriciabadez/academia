@@ -7,11 +7,11 @@ import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { LogsComponent } from './pages/logs/logs.component';
 
 const routes: Routes = [
-
   { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'usuarios', component: UsuariosComponent },
-  { path: 'logs', component: LogsComponent}, // 👈 nova rota
-  { path: '**', redirectTo: 'login' }
+  { path: 'logs', component: LogsComponent }, // 👈 nova rota
+  { path: '**', redirectTo: 'login' },
 ];
 
 @NgModule({
