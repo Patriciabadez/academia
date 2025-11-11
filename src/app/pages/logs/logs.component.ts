@@ -1,10 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LogService } from '../../services/logs.service';
+
 
 @Component({
   selector: 'app-logs',
   templateUrl: './logs.component.html',
-  styleUrl: './logs.component.css'
+  styleUrls: ['./logs.component.scss']
 })
-export class LogsComponent {
+export class LogsComponent implements OnInit {
+  logs: any[] = [];
 
+  constructor(private logService: LogService) {}
+
+  ngOnInit() {
+    this.logs = this.logService.obterLogs();
+  }
+
+  limpar() {
+    this.logService.limparLogs();
+    this.logs = [];
+  }
 }

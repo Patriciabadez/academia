@@ -4,21 +4,14 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { LogsComponent } from './pages/logs/logs.component';
 
 const routes: Routes = [
+
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  {
-    path: 'home',
-    component: HomeComponent,
-
-  },
-   {
-    path: 'usuarios',
-    component: UsuariosComponent,
-    
-  },
-
+  { path: 'usuarios', component: UsuariosComponent },
+  { path: 'logs', component: LogsComponent}, // 👈 nova rota
+  { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({

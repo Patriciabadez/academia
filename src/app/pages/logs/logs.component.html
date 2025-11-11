@@ -1,1 +1,24 @@
-<p>logs works!</p>
+<div class="logs-container mat-elevation-z3">
+  <h2>📜 Logs de Operações</h2>
+
+  <table mat-table [dataSource]="logs" class="mat-elevation-z2">
+    <ng-container matColumnDef="data">
+      <th mat-header-cell *matHeaderCellDef> Data/Hora </th>
+      <td mat-cell *matCellDef="let log"> {{ log.data }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acao">
+      <th mat-header-cell *matHeaderCellDef> Ação </th>
+      <td mat-cell *matCellDef="let log"> {{ log.acao }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="usuario">
+      <th mat-header-cell *matHeaderCellDef> Usuário </th>
+      <td mat-cell *matCellDef="let log"> {{ log.usuario }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['data', 'acao', 'usuario']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['data', 'acao', 'usuario'];"></tr>
+  </table>
+
+</div>

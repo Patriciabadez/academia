@@ -1,0 +1,23 @@
+.logs-container {
+  max-width: 800px;
+  margin: 40px auto;
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+h2 {
+  text-align: center;
+  color: #222d5b;
+  margin-bottom: 16px;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+}

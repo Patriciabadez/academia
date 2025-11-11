@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { Usuario } from '../../models/usuario.model';
 import { UsuariosService } from '../../services/usuarios.service';
+import { LogService } from '../../services/logs.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -23,7 +24,8 @@ export class UsuariosComponent {
 
   constructor(
     private usuariosService: UsuariosService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private logService: LogService // 👈 injetamos aqui
   ) {}
 
   ngOnInit() {
@@ -44,20 +46,23 @@ export class UsuariosComponent {
       return;
     }
 
-    this.usuariosService.adicionar(this.novoUsuario as Usuario).subscribe(() => {
+    this.usuariosService.adicionar(this.novoUsuario as any).subscribe(() => {
       this.messageService.add({
         severity: 'success',
         summary: 'Sucesso',
         detail: 'Usuário cadastrado!',
       });
+
+      // 🪵 Aqui registramos o log
+      this.logService.registrar(
+        'Cadastrou novo usuário',
+        this.novoUsuario.username || 'Desconhecido'
+      );
+
       this.carregarUsuarios();
-      this.novoUsuario = {
-        username: '',
-        email: '',
-        password: '',
-        tipo: 'aluno',
-        ativo: true
-      };
+
+      // limpa os campos
+      this.novoUsuario = { username: '', email: '', password: '', tipo: 'aluno', ativo: true };
     });
   }
 
@@ -68,6 +73,13 @@ export class UsuariosComponent {
         summary: 'Removido',
         detail: 'Usuário excluído com sucesso!',
       });
+
+      // 🪵 Também registramos exclusão no log
+      this.logService.registrar(
+        `Excluiu usuário com ID ${id}`,
+        'Administrador' // ou o usuário logado futuramente
+      );
+
       this.carregarUsuarios();
     });
   }

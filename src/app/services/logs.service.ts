@@ -1,23 +1,25 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
-export class LogsService {
-  private logs: string[] = [];
+export class LogService {
+  private logsKey = 'appLogs';
 
-  registrar(acao: string): void {
-    const log = `${new Date().toLocaleString()} - ${acao}`;
-    this.logs.unshift(log);
-    localStorage.setItem('logs', JSON.stringify(this.logs));
+  registrar(acao: string, usuario: string) {
+    const logs = this.obterLogs();
+    const novoLog = {
+      data: new Date().toLocaleString(),
+      usuario,
+      acao
+    };
+    logs.unshift(novoLog); // adiciona no início
+    localStorage.setItem(this.logsKey, JSON.stringify(logs));
   }
 
-  listar(): string[] {
-    const logsSalvos = localStorage.getItem('logs');
-    if (logsSalvos) this.logs = JSON.parse(logsSalvos);
-    return this.logs;
+  obterLogs() {
+    return JSON.parse(localStorage.getItem(this.logsKey) || '[]');
   }
 
-  limpar(): void {
-    this.logs = [];
-    localStorage.removeItem('logs');
+  limparLogs() {
+    localStorage.removeItem(this.logsKey);
   }
 }
