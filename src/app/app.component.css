@@ -1,12 +1,8 @@
-/* .custom-toast {
-  padding: 20px;
-  margin: 10px;
-} */
 .sidenav-container {
   height: 100vh;
 }
 
-.sidenav  {
+.sidenav {
   width: 220px;
   background: #222;
   color: #fff;
@@ -15,12 +11,12 @@
 .sidenav .logo {
   padding: 16px;
   text-align: center;
-  border-bottom: 1px solid #d4af375d;
-
+  border-bottom: 5px solid #d4af375d;
 }
 
 .mat-nav-list .mat-list-item {
   color: #fff;
+
 }
 
 .mat-nav-list .mat-list-item .mat-icon {
@@ -31,11 +27,13 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  background: #111;
+  height: 80px;
+  background: #222;
+  border-radius: 10px;
 }
 
 .topbar .menu-button {
-  color: #fff;
+  color: #d4af37;
 }
 
 .topbar .topbar-title {
@@ -55,7 +53,7 @@
 }
 
 .menu-item {
-  color: #D4AF37 !important;
+  color: #d4af37 !important;
   display: flex;
   align-items: center;
   font-weight: 500;
@@ -63,21 +61,21 @@
 }
 
 .menu-item mat-icon {
-  color: #D4AF37;
+  color: #d4af37;
   margin-right: 10px;
   font-size: 22px;
 }
 
 .menu-item span {
-  color: #D4AF37;
+  color: #d4af37;
 }
 
 .menu-item:hover {
   background-color: rgba(212, 175, 55, 0.1);
-  border-left: 3px solid #D4AF37;
+  border-left: 3px solid #d4af37;
 }
 
 .menu-item.active {
   background-color: rgba(212, 175, 55, 0.2);
-  border-left: 4px solid #D4AF37;
+  border-left: 4px solid #d4af37;
 }

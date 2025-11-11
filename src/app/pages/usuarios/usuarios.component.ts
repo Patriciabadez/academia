@@ -1,15 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-interface Usuario {
-  nome: string;
-  username: string;
-  email: string;
-  codigo?: string;
-  funcao: string;
-  senha: string;
-  ativo: boolean;
-}
+import { MessageService } from 'primeng/api';
+import { Usuario } from '../../models/usuario.model';
+import { UsuariosService } from '../../services/usuarios.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -17,39 +9,66 @@ interface Usuario {
   styleUrls: ['./usuarios.component.css']
 })
 export class UsuariosComponent {
-  formUsuario: FormGroup;
   usuarios: Usuario[] = [];
-  colunas: string[] = ['nome', 'username', 'email', 'codigo', 'funcao', 'ativo'];
 
-  constructor(private fb: FormBuilder) {
-    this.formUsuario = this.fb.group({
-      nome: ['', Validators.required],
-      username: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      codigo: [''],
-      funcao: ['', Validators.required],
-      senha: ['', Validators.required],
-      confirmarSenha: ['', Validators.required]
-    });
+  novoUsuario: Partial<Usuario> = {
+    username: '',
+    email: '',
+    password: '',
+    tipo: 'aluno',
+    ativo: true
+  };
 
-    // Mock inicial
-    this.usuarios = [
-      { nome: 'Patrícia', username: 'patricia', email: 'patricia@academia.com', codigo: '001', funcao: 'administrador', senha: '123', ativo: true },
-      { nome: 'Carlos', username: 'carlos', email: 'carlos@academia.com', codigo: '002', funcao: 'funcionario', senha: '123', ativo: true },
-      { nome: 'João Silva', username: 'joaos', email: 'joao@academia.com', codigo: '003', funcao: 'aluno', senha: '123', ativo: true }
-    ];
+  tipos = ['admin', 'personal', 'recepcionista', 'limpeza', 'aluno'];
+
+  constructor(
+    private usuariosService: UsuariosService,
+    private messageService: MessageService
+  ) {}
+
+  ngOnInit() {
+    this.carregarUsuarios();
   }
 
-  cadastrarUsuario() {
-    if (this.formUsuario.invalid) return;
+  carregarUsuarios() {
+    this.usuariosService.listar().subscribe((data) => (this.usuarios = data));
+  }
 
-    const novoUsuario: Usuario = {
-      ...this.formUsuario.value,
-      ativo: true
-    };
+  cadastrar() {
+    if (!this.novoUsuario.username || !this.novoUsuario.password || !this.novoUsuario.email) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Campos obrigatórios',
+        detail: 'Preencha usuário, e-mail e senha!',
+      });
+      return;
+    }
 
-    // Simula salvamento local
-    this.usuarios.push(novoUsuario);
-    this.formUsuario.reset();
+    this.usuariosService.adicionar(this.novoUsuario as Usuario).subscribe(() => {
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Sucesso',
+        detail: 'Usuário cadastrado!',
+      });
+      this.carregarUsuarios();
+      this.novoUsuario = {
+        username: '',
+        email: '',
+        password: '',
+        tipo: 'aluno',
+        ativo: true
+      };
+    });
+  }
+
+  excluir(id: number) {
+    this.usuariosService.excluir(id).subscribe(() => {
+      this.messageService.add({
+        severity: 'info',
+        summary: 'Removido',
+        detail: 'Usuário excluído com sucesso!',
+      });
+      this.carregarUsuarios();
+    });
   }
 }

@@ -11,6 +11,7 @@ export class AppComponent {
   isLoginPage = false;
   title = 'academia';
 
+
   constructor(private router: Router) {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
@@ -18,5 +19,8 @@ export class AppComponent {
         // verifica se a rota é /login
         this.isLoginPage = event.urlAfterRedirects.includes('/login');
       });
+  }
+  logout() {
+    this.router.navigate(['/login']);
   }
 }

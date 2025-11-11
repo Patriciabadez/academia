@@ -1,58 +1,71 @@
-.container {
+.usuarios-container {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 20px;
-  height: 100%;
-  box-sizing: border-box;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #f9fafc;
+  min-height: 100vh;
 }
 
-/* Card do formulário */
-.card {
-  background: #fff;
-  padding: 20px;
+.usuarios-card {
+  background: #ffffff;
+  border-left: 5px solid #d4af37; /* dourado */
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border-left: 4px solid #D4AF37;
+  box-shadow: 0 4px 15px rgba(34, 45, 91, 0.15);
+  padding: 1.5rem;
+}
+
+.titulo {
+  color: #d4af37;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
 }
 
 .formulario {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.linha {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
 }
 
 .campo {
-  flex: 1;
-  min-width: 220px;
-}
-
-.botao {
-  align-self: flex-end;
-  margin-top: 16px;
-}
-
-button.mat-raised-button {
-  background-color: #D4AF37;
-  color: #fff;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
-button.mat-raised-button:hover {
-  background-color: #b9962f;
-}
-
-/* Tabela */
-.tabela {
   width: 100%;
+}
+
+.botoes {
+  grid-column: 1 / -1;
+  text-align: right;
+}
+
+button[color="primary"] {
+  background-color: #d4af37;
+  color: white;
   border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+}
+
+.usuarios-lista {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(34, 45, 91, 0.15);
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  background-color: #222d5b;
+  color: white;
+  font-weight: 500;
+}
+
+td {
+  color: #333;
+}
+
+mat-icon {
+  color: #d32f2f;
 }

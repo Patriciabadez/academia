@@ -44,6 +44,10 @@ import { CurrencyPipe, DatePipe, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AlunosComponent } from './pages/alunos/alunos.component';
+import { FuncionariosComponent } from './pages/funcionarios/funcionarios.component';
+import { LogsComponent } from './pages/logs/logs.component';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -54,6 +58,10 @@ registerLocaleData(localePt, 'pt-BR');
     HomeComponent,
     UsuariosComponent,
     MenuComponent,
+    DashboardComponent,
+    AlunosComponent,
+    FuncionariosComponent,
+    LogsComponent,
 
 
   ],

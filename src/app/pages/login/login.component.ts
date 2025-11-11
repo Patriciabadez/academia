@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
 import { LoginService } from '../../services/login.service';
 
-
 interface JwtPayload {
   username: string;
   email: string;
@@ -36,12 +35,13 @@ export class LoginComponent {
     this.isLoading = true;
     if (!this.username || !this.password) {
       this.messageService.add({
-        severity: 'success',
-        summary: 'Sucesso',
-        detail: 'Bem vindo de volta!',
+        severity: 'warn',
+        summary: 'Atenção',
+        detail: 'Informe usuário e senha!',
         life: 2000,
         styleClass: 'custom-toast',
       });
+      this.isLoading = false;
       return;
     }
     this.loginService.login(this.username, this.password).subscribe(
