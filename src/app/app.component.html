@@ -1,7 +1,4 @@
-<!-- app.component.html -->
 <p-toast class="custom-toast"></p-toast>
-
-<!-- Layout completo (menu + toolbar) -->
 <ng-container *ngIf="!isLoginPage">
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav class="sidenav" mode="side" opened>
@@ -9,15 +6,32 @@
         <img class="logo-image" src="logo-dark.svg" alt="logo da empresa" />
       </div>
 
+      <a mat-list-item routerLink="/home" routerLinkActive="active" class="menu-item">
+        <mat-icon>people</mat-icon>
+        <span>Inicio</span>
+      </a>
+
       <mat-nav-list>
         <a mat-list-item routerLink="/alunos" routerLinkActive="active" class="menu-item">
           <mat-icon>send</mat-icon>
           <span>Alunos</span>
         </a>
-        <a mat-list-item routerLink="/cadastrar" routerLinkActive="active" class="menu-item">
+
+        <a mat-list-item routerLink="/cadastrar-alunos" routerLinkActive="active" class="menu-item">
           <mat-icon>track_changes</mat-icon>
           <span>Cadastrar - Alunos</span>
         </a>
+
+        <a mat-list-item routerLink="/funcionarios" routerLinkActive="active" class="menu-item">
+          <mat-icon>people</mat-icon>
+          <span>Funcionários</span>
+        </a>
+
+        <a mat-list-item routerLink="/cadastrar-funcionarios" routerLinkActive="active" class="menu-item">
+          <mat-icon>people</mat-icon>
+          <span>Cadastrar - Funcionários</span>
+        </a>
+
         <a mat-list-item routerLink="/usuarios" routerLinkActive="active" class="menu-item">
           <mat-icon>people</mat-icon>
           <span>Usuários</span>
@@ -32,7 +46,7 @@
           <mat-icon>menu</mat-icon>
         </button>
 
-        <span class="topbar-title">Painel - Academia</span>
+        <span class="topbar-title">Painel de controle - Academia</span>
         <span class="spacer"></span>
 
         <button mat-button [matMenuTriggerFor]="userMenu" style="color: #D4AF37">

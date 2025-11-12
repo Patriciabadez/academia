@@ -34,41 +34,38 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoginComponent } from './pages/login/login.component';
-import { HomeComponent } from './pages/home/home.component';
-
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-
 import { PaginatorPtBr } from '../paginator-pt-br';
 import { CurrencyPipe, DatePipe, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { AlunosComponent } from './pages/alunos/alunos.component';
-import { FuncionariosComponent } from './pages/funcionarios/funcionarios.component';
 import { LogsComponent } from './pages/logs/logs.component';
 import { AlunoFormComponent } from './pages/aluno-form/aluno-form.component';
 import { AlunoListComponent } from './pages/aluno-list/aluno-list.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { FuncionarioListComponent } from './pages/funcionario-list/funcionario-list.component';
+import { CadastrosComponent } from './components/cadastros/cadastros.component';
+import { FuncionarioFormComponent } from './pages/funcionario-form/funcionario-form.component';
 
 registerLocaleData(localePt, 'pt-BR');
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent,
     UsuariosComponent,
     MenuComponent,
     DashboardComponent,
-    AlunosComponent,
-    FuncionariosComponent,
     LogsComponent,
     AlunoFormComponent,
     AlunoListComponent,
+    FuncionarioListComponent,
+    FuncionarioFormComponent,
+    CadastrosComponent,
   ],
   imports: [
     BrowserModule,
