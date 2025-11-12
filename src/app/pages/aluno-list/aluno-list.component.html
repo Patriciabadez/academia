@@ -1,0 +1,70 @@
+<mat-card class="aluno-card">
+  <div class="header">
+    <h2>Lista de Alunos</h2>
+    <button mat-raised-button color="primary" routerLink="/alunos/cadastrar">
+      + Novo Aluno
+    </button>
+  </div>
+
+  <table mat-table [dataSource]="alunos" class="mat-elevation-z8 full-width-table">
+
+    <!-- ID -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let aluno">{{ aluno.id }}</td>
+    </ng-container>
+
+    <!-- Nome -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef>Nome</th>
+      <td mat-cell *matCellDef="let aluno">{{ aluno.nome }}</td>
+    </ng-container>
+
+    <!-- Email -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let aluno">{{ aluno.email }}</td>
+    </ng-container>
+
+    <!-- Telefone -->
+    <ng-container matColumnDef="telefone">
+      <th mat-header-cell *matHeaderCellDef>Telefone</th>
+      <td mat-cell *matCellDef="let aluno">{{ aluno.telefone }}</td>
+    </ng-container>
+
+    <!-- Plano -->
+    <ng-container matColumnDef="plano">
+      <th mat-header-cell *matHeaderCellDef>Plano</th>
+      <td mat-cell *matCellDef="let aluno">{{ aluno.plano }}</td>
+    </ng-container>
+
+    <!-- Validade -->
+    <ng-container matColumnDef="validadePlano">
+      <th mat-header-cell *matHeaderCellDef>Validade</th>
+      <td mat-cell *matCellDef="let aluno">{{ aluno.validadePlano | date: 'dd/MM/yyyy' }}</td>
+    </ng-container>
+
+    <!-- Ativo -->
+    <ng-container matColumnDef="ativo">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let aluno">
+        <mat-slide-toggle color="primary" [checked]="aluno.ativo" (change)="alternarStatus(aluno)">
+          {{ aluno.ativo ? 'Ativo' : 'Inativo' }}
+        </mat-slide-toggle>
+      </td>
+    </ng-container>
+
+    <!-- Ações -->
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <td mat-cell *matCellDef="let aluno">
+        <button mat-icon-button color="warn" (click)="excluir(aluno.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card>

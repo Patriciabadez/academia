@@ -1,0 +1,21 @@
+.aluno-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.full-width-table {
+  width: 100%;
+}
+
+mat-slide-toggle {
+  font-weight: 500;
+}

@@ -17,7 +17,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import {
+  MatPaginatorIntl,
+  MatPaginatorModule,
+} from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -48,7 +51,9 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AlunosComponent } from './pages/alunos/alunos.component';
 import { FuncionariosComponent } from './pages/funcionarios/funcionarios.component';
 import { LogsComponent } from './pages/logs/logs.component';
-
+import { AlunoFormComponent } from './pages/aluno-form/aluno-form.component';
+import { AlunoListComponent } from './pages/aluno-list/aluno-list.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 registerLocaleData(localePt, 'pt-BR');
 @NgModule({
@@ -62,8 +67,8 @@ registerLocaleData(localePt, 'pt-BR');
     AlunosComponent,
     FuncionariosComponent,
     LogsComponent,
-
-
+    AlunoFormComponent,
+    AlunoListComponent,
   ],
   imports: [
     BrowserModule,
@@ -101,7 +106,8 @@ registerLocaleData(localePt, 'pt-BR');
     ReactiveFormsModule,
     CurrencyPipe,
     MatRadioModule,
-    ToastModule
+    ToastModule,
+    MatSlideToggleModule,
   ],
 
   providers: [
