@@ -1,6 +1,6 @@
 import { jwtDecode } from 'jwt-decode';
 import { MessageService } from 'primeng/api';
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
@@ -15,6 +15,7 @@ interface JwtPayload {
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
+  // encapsulation: ViewEncapsulation.None,
 })
 export class LoginComponent {
   isLoading: boolean = false;

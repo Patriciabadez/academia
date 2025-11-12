@@ -3,33 +3,41 @@
 }
 
 .sidenav {
-  width: 220px;
-  background: #222;
+  width: 230px;
+  background: #1E1E2F;
   color: #fff;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .sidenav .logo {
-  padding: 16px;
+  padding: 20px;
   text-align: center;
-  border-bottom: 5px solid #d4af375d;
+  border-bottom: 3px solid #d4af37;
+}
+
+.logo img {
+  width: 120px;
+  filter: brightness(0) invert(1);
 }
 
 .mat-nav-list .mat-list-item {
   color: #fff;
-
 }
 
 .mat-nav-list .mat-list-item .mat-icon {
   margin-right: 12px;
+  color: #d4af37;
 }
 
 .topbar {
   position: sticky;
   top: 0;
   z-index: 10;
-  height: 80px;
-  background: #222;
-  border-radius: 10px;
+  height: 70px;
+  background: #11111b;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 .topbar .menu-button {
@@ -37,9 +45,10 @@
 }
 
 .topbar .topbar-title {
-  margin-left: 8px;
+  margin-left: 10px;
   font-weight: 600;
   color: #fff;
+  font-size: 18px;
 }
 
 .spacer {
@@ -48,16 +57,20 @@
 
 .content {
   padding: 20px;
-  background: #f7f7f7;
+  background: #f4f4f6;
   min-height: calc(100vh - 64px);
 }
 
 .menu-item {
-  color: #d4af37 !important;
+  color: #fff !important;
   display: flex;
   align-items: center;
   font-weight: 500;
   transition: all 0.3s ease;
+  padding: 10px 16px;
+  border-left: 3px solid transparent;
+  border-radius: 8px;
+  margin: 4px 8px;
 }
 
 .menu-item mat-icon {
@@ -67,15 +80,21 @@
 }
 
 .menu-item span {
-  color: #d4af37;
+  color: #fff;
 }
 
 .menu-item:hover {
-  background-color: rgba(212, 175, 55, 0.1);
+  background-color: #2e2e48;
   border-left: 3px solid #d4af37;
+  transform: translateX(4px);
 }
 
 .menu-item.active {
   background-color: rgba(212, 175, 55, 0.2);
   border-left: 4px solid #d4af37;
+}
+
+.username {
+  font-weight: 500;
+  color: #d4af37;
 }

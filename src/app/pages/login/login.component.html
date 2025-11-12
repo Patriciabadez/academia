@@ -1,49 +1,49 @@
-<div *ngIf="isLoading" class="spinner">
-  <!-- <mat-progress-spinner mode="indeterminate"></mat-progress-spinner> -->
-</div>
-<div class="login-container background-image" style="background-image: url('../../../assets/fundo.');">
-  <mat-card class="login-card">
-    <mat-card-header>
-      <img class="logo-image" src="logo-dark.svg" alt="Logo" />
-    </mat-card-header>
-    <div class="header">
-      <div class="header-left">
-        <h2 class="css-9826r4">Bem-Vindo
-        </h2>
-      </div>
+<div class="login-container">
+  <div class="background-overlay"></div>
+
+  <div class="login-card">
+    <div class="logo-area">
+      <img src="logo-dark.svg" alt="Logo SmartFit" class="logo-image" />
+      <h2 class="login-title">Painel de Controle - Academia</h2>
     </div>
-    <p class="text_paragrafo css-9826r4">Insira suas credenciais para entrar no sistema</p>
 
-    <form>
-      <div class="column-container">
-        <h2 class="text css-9826r4">E-mail</h2>
-        <mat-form-field class="full-width">
-          <mat-icon matPrefix style="color: #F7C325;">account_circle</mat-icon>
-          <input matInput placeholder="email@dominio.com.br" [(ngModel)]="username" name="username" name="email"
-            required />
-        </mat-form-field>
-      </div>
+    <form (ngSubmit)="login()" autocomplete="off">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Usuário</mat-label>
+        <input matInput [(ngModel)]="username" name="username"/>
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
 
-      <div class="column-container">
-        <h2 class="text css-9826r4">Senha</h2>
-        <mat-form-field class="full-width">
-          <mat-icon matPrefix style="color: #F7C325;">lock</mat-icon>
-          <input matInput [type]="hide ? 'password' : 'text'" placeholder="Senha" [(ngModel)]="password" name="password"
-            required />
-          <button mat-icon-button matSuffix style="color: #F7C325;" (click)="hide = !hide"
-            [attr.aria-label]="hide ? 'Show password' : 'Hide password'">
-            <mat-icon>{{ hide ? 'visibility' : 'visibility_off' }}</mat-icon>
-          </button>
-        </mat-form-field>
-      </div>
-
-      <div class="login-button">
-        <button mat-raised-button color="primary" (click)="login()" class="login-button"
-          [disabled]="!username || !password">
-          Entrar
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Senha</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          [(ngModel)]="password"
+          name="password"
+        />
+        <button
+          type="button"
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Ocultar senha'"
+        >
+          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
-      </div>
-    </form>
+      </mat-form-field>
 
-  </mat-card>
+      <button
+        mat-raised-button
+        class="login-button"
+        [disabled]="isLoading"
+        type="submit"
+      >
+        <span *ngIf="!isLoading">Entrar</span>
+        <mat-spinner *ngIf="isLoading" diameter="28"></mat-spinner>
+      </button>
+
+      <p class="forgot-text">Esqueceu sua senha?</p>
+    </form>
+  </div>
 </div>

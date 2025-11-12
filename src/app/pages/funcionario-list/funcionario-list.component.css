@@ -1,39 +1,73 @@
+/* ======== Card principal ======== */
 .funcionario-card {
-  background-color: #fff;
+  background-color: #2B2B4B; /* levemente mais claro que o menu */
+  color: #fff;
   padding: 24px;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
   border-left: 5px solid #d4af37;
   max-width: 1200px;
   margin: 40px auto;
 }
 
+/* ======== Cabeçalho ======== */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 h2 {
   color: #d4af37;
   font-weight: bold;
   margin: 0;
+  font-size: 1.6rem;
 }
 
+/* ======== Botão “+ Novo Funcionário” ======== */
 button[color="primary"] {
   background-color: #d4af37;
-  color: white;
+  color: #1E1E2F;
   border-radius: 8px;
-  padding: 0.5rem 1.5rem;
+  padding: 0.6rem 1.5rem;
   font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  border: none;
 }
 
+button[color="primary"]:hover {
+  background-color: #c09c2e;
+  transform: scale(1.03);
+}
+
+/* ======== Formulário ======== */
+mat-form-field {
+  width: 100%;
+  background-color: #f8f8f8; /* fundo claro dentro do card */
+  border-radius: 8px;
+  padding: 4px 12px;
+  margin-bottom: 16px;
+}
+
+mat-label {
+  color: #333;
+}
+
+input, select, textarea {
+  color: #222;
+}
+
+/* ======== Container da tabela ======== */
 .table-container {
   overflow-x: auto;
   border-radius: 12px;
+  margin-top: 24px;
 }
 
+/* ======== Tabela ======== */
 .full-width-table {
   width: 100%;
   border-collapse: collapse;
@@ -41,28 +75,49 @@ button[color="primary"] {
   overflow: hidden;
 }
 
+/* ======== Cabeçalho da tabela ======== */
 .full-width-table th {
-  background-color: #222d5b;
+  background-color: #222D5B;
   color: #fff;
   font-weight: 600;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   padding: 12px 16px;
+  text-align: left;
+  border-bottom: 2px solid #d4af37;
 }
 
+/* ======== Células ======== */
 .full-width-table td {
   padding: 12px 16px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #2c2c3e;
+  vertical-align: middle;
 }
 
+/* ======== Alternância de linhas ======== */
 .full-width-table tr:nth-child(even) {
-  background-color: #f8f8f8;
+  background-color: #2f2f4a17;
 }
 
+/* ======== Hover nas linhas ======== */
 .full-width-table tr:hover {
-  background-color: #f1f1f1;
-  transition: 0.2s;
+  background-color: #3a3a5a56;
+  transition: background 0.2s ease;
 }
 
+/* ======== Ícones ======== */
+mat-icon {
+  font-size: 22px;
+  color: #d4af37;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+mat-icon:hover {
+  color: #c09c2e;
+}
+
+/* ======== Coluna de ações ======== */
 .actions-cell {
   text-align: center;
 }
