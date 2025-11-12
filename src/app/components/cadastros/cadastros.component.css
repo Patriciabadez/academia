@@ -1,36 +1,125 @@
+/* ===== Fundo gradiente animado ===== */
+.cadastros-wrapper {
+  position: relative;
+  overflow: hidden;
+
+  border-radius: 10px;
+
+}
+
+.background-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(-45deg, #333, #d4af37, #222d5b, #f7c325);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  z-index: 0;
+}
+
+/* ===== Container ===== */
 .cadastros-container {
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 20px;
-  padding: 40px;
+  gap: 25px;
+  padding: 60px 40px;
   text-align: center;
+  animation: fadeInUp 1s ease;
 }
 
+/* ===== Cards ===== */
 .cadastro-card {
-  background-color: #fff;
+  background: rgba(255, 255, 255, 0.95);
   color: #222;
   border-radius: 16px;
   padding: 20px;
   width: 250px;
   height: 160px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  border-top: 6px solid #d4af37;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  border-top: 5px solid #d4af37;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  animation: fadeCard 1s ease forwards;
+}
+
+/* efeito hover dourado sutil */
+.cadastro-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(212, 175, 55, 0.25), transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.cadastro-card:hover::before {
+  transform: translateX(100%);
 }
 
 .cadastro-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 8px 22px rgba(212, 175, 55, 0.4);
 }
 
+/* ===== Títulos e textos ===== */
 .cadastro-card h2 {
   color: #d4af37;
   margin-bottom: 8px;
+  font-weight: 600;
 }
 
 .cadastro-card p {
   font-size: 14px;
-  color: #444;
+  color: #333;
+}
+
+/* ===== Animações ===== */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeCard {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 600px) {
+  .cadastros-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cadastro-card {
+    width: 90%;
+  }
 }

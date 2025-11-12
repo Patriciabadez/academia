@@ -1,42 +1,95 @@
-/* ======== Container principal ======== */
 .funcionario-container {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  background-color: #f0f2f5;
+  min-height: 100vh;
+  background: linear-gradient(-45deg,
+    #e8e8ef,
+    #f7e7b0,
+    #dde3f0,
+    #fafafa
+  );
+
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+  position: relative;
+  overflow: hidden;
 }
 
-/* ======== Card ======== */
+.funcionario-container::before {
+  content: "";
+  position: absolute;
+  width: 180%;
+  height: 180%;
+  top: -40%;
+  left: -40%;
+  background: radial-gradient(circle at center, rgba(255, 229, 153, 0.25), transparent 70%);
+  animation: glowPulse 6s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+
 .funcionario-card {
-  background-color: #ffffff;
+  background: linear-gradient(145deg, #ffffff, #f3f3f3);
   color: #222;
   padding: 40px 48px;
-  border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-  border-left: 5px solid #d4af37;
+  border-radius: 22px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+  border: 2px solid rgba(212, 175, 55, 0.4);
   width: 100%;
   max-width: 600px;
   text-align: center;
-  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  z-index: 1;
+}
+
+.funcionario-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  border: 2px solid transparent;
+  background: linear-gradient(120deg, rgba(212,175,55,0.4), rgba(255,255,255,0.1), rgba(212,175,55,0.6)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderGlow 4s linear infinite;
+}
+
+@keyframes borderGlow {
+  0% { opacity: 0.4; transform: rotate(0deg); }
+  50% { opacity: 1; transform: rotate(180deg); }
+  100% { opacity: 0.4; transform: rotate(360deg); }
 }
 
 .funcionario-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* ======== Título ======== */
 h2 {
   color: #d4af37;
   font-weight: bold;
   margin-bottom: 24px;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
 }
 
-/* ======== Formulário ======== */
 .funcionario-form {
   display: flex;
   flex-direction: column;
@@ -45,23 +98,26 @@ h2 {
   width: 100%;
 }
 
-/* ======== Campos ======== */
 mat-form-field {
   width: 100%;
 }
 
-.mat-form-field-appearance-outline .mat-form-field-outline {
-  color: #d4af37 !important;
-  opacity: 0.5;
-}
-
+.mat-form-field-appearance-outline .mat-form-field-outline,
 .mat-form-field-appearance-outline .mat-form-field-outline-thick {
-  color: #d4af37 !important;
+  display: none !important;
 }
 
 .mat-form-field-flex {
-  background-color: #f7f7f9 !important;
-  border-radius: 6px !important;
+  background-color: rgba(255,255,255,0.9) !important;
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.mat-form-field-flex:hover {
+  background-color: #ffffff !important;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
 }
 
 .mat-input-element {
@@ -70,11 +126,10 @@ mat-form-field {
 }
 
 .mat-form-field-label {
-  color: #555 !important;
+  color: #666 !important;
   font-weight: 500;
 }
 
-/* ======== Checkbox ======== */
 mat-checkbox {
   align-self: flex-start;
   color: #222;
@@ -84,22 +139,30 @@ mat-checkbox {
   background-color: #d4af37 !important;
 }
 
-/* ======== Botão ======== */
 button[color="primary"] {
-  background-color: #d4af37;
-  color: #1E1E2F;
-  border-radius: 8px;
-  padding: 0.75rem 2rem;
+  background: linear-gradient(90deg, #d4af37, #f7c325, #d4af37);
+  background-size: 200% 100%;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 0.8rem 2.5rem;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: all 0.3s ease;
+  letter-spacing: 0.07em;
   border: none;
-  margin-top: 12px;
-   color: #ffffff;
+  margin-top: 16px;
+  box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4);
+  transition: all 0.4s ease;
+  animation: shine 4s linear infinite;
 }
 
 button[color="primary"]:hover {
-  background-color: #c09c2e;
-  transform: scale(1.03);
+  background-position: 100% 0;
+  transform: scale(1.07);
+  box-shadow: 0 8px 18px rgba(212, 175, 55, 0.6);
+}
+
+@keyframes shine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

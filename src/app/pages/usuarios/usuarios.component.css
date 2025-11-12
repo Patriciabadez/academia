@@ -1,77 +1,178 @@
+/* ======== Fundo geral suave e metálico ======== */
+body {
+  background: linear-gradient(135deg, #f1f1f1, #dcdcdc, #ececec);
+  background-size: 200% 200%;
+  animation: metallicFlow 15s ease infinite;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ======== Container ======== */
 .usuarios-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 2rem;
-  background-color: #f9fafc;
-  min-height: 100vh;
+  padding: 40px;
 }
 
+/* ======== Card principal ======== */
 .usuarios-card {
-  background: #ffffff;
-  border-left: 5px solid #d4af37;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(34, 45, 91, 0.15);
-  padding: 1.5rem;
+  background: linear-gradient(145deg, #f7f7f7, #e1e1e1);
+  color: #111;
+  padding: 28px;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15),
+              inset 1px 1px 3px rgba(255, 255, 255, 0.6);
+  border-left: 6px solid #d4af37;
+  max-width: 1200px;
+  margin: 0 auto 50px;
+  backdrop-filter: blur(6px);
+  animation: fadeInCard 1s ease;
 }
 
+/* ======== Cabeçalho / Título ======== */
 .titulo {
   color: #d4af37;
   font-weight: bold;
-  margin-bottom: 1.5rem;
+  font-size: 1.7rem;
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
 }
 
-.formulario {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1rem;
-
-}
-
-.campo {
-  width: 100%;
-}
-
+/* ======== Botão “Cadastrar” ======== */
 .botoes {
-  grid-column: 1 / -1;
   text-align: right;
+  margin-top: 1rem;
 }
 
 button[color="primary"] {
-  background-color: #d4af37;
-  color: white;
-  border-radius: 8px;
-  padding: 0.5rem 1.5rem;
-  font-weight: bold;
+  background: linear-gradient(90deg, #d4af37, #b99222);
+  color: #1E1E2F;
+  border-radius: 10px;
+  padding: 0.7rem 1.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
 }
 
-.usuarios-lista {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 15px rgba(34, 45, 91, 0.15);
-   border-left: 5px solid #d4af37;
+button[color="primary"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.55);
+  background: linear-gradient(90deg, #e6c84d, #c19b25);
 }
 
-table {
+/* ======== Formulário ======== */
+.formulario {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ======== Inputs (sem bordas e suaves) ======== */
+mat-form-field {
   width: 100%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 6px 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
 }
 
-th {
-  background-color: #d4af37;
-  color: white;
+mat-form-field:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* Remove completamente as bordas padrão */
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline,
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  color: transparent !important;
+  border: none !important;
+}
+
+/* Campos e labels */
+mat-label {
+  color: #555 !important;
   font-weight: 500;
 }
 
-td {
-  color: #333;
+input, select, textarea {
+  color: #111 !important;
+  font-weight: 500;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
 }
 
-mat-icon {
-  color: #d32f2f;
+/* ======== Tabela ======== */
+.usuarios-lista {
+  background: #fafafa;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  border-left: 6px solid #d4af37;
+  animation: fadeInCard 1s ease;
 }
-h3{
+
+/* Corrige header da tabela (títulos) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: left;
+}
+
+/* Cabeçalhos visíveis e elegantes */
+th {
+   background: linear-gradient(90deg, #222D5B, #2f3b8a);
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 14px 16px;
+  font-size: 0.95rem;
+  border-bottom: 3px solid #d4af37;
+}
+
+/* Linhas e células */
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+  color: #111;
+}
+tr:nth-child(even) {
+  background-color: #f4f4f4;
+}
+tr:hover {
+  background-color: #fff5d4;
+  transition: background 0.3s ease;
+}
+
+/* Ícones de ação */
+mat-icon {
+  font-size: 22px;
   color: #d4af37;
-  margin-bottom: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+mat-icon:hover {
+  transform: scale(1.1);
+  color: #b99728;
+}
+
+/* ======== Animações ======== */
+@keyframes metallicFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInCard {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
