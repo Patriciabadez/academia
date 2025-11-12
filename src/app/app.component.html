@@ -1,4 +1,5 @@
 <p-toast class="custom-toast"></p-toast>
+
 <ng-container *ngIf="!isLoginPage">
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav class="sidenav" mode="side" opened>
@@ -6,49 +7,62 @@
         <img class="logo-image" src="logo-dark.svg" alt="logo da empresa" />
       </div>
 
+      <!-- Início -->
       <a mat-list-item routerLink="/home" routerLinkActive="active" class="menu-item">
-        <mat-icon>people</mat-icon>
-        <span>Inicio</span>
+        <mat-icon>dashboard</mat-icon>
+        <span>Início</span>
       </a>
 
       <mat-nav-list>
+        <!-- Alunos -->
         <a mat-list-item routerLink="/alunos" routerLinkActive="active" class="menu-item">
-          <mat-icon>send</mat-icon>
+          <mat-icon>fitness_center</mat-icon>
           <span>Alunos</span>
         </a>
 
+        <!-- Cadastrar Aluno -->
         <a mat-list-item routerLink="/cadastrar-alunos" routerLinkActive="active" class="menu-item">
-          <mat-icon>track_changes</mat-icon>
-          <span>Cadastrar - Alunos</span>
+          <mat-icon>person_add</mat-icon>
+          <span>Cadastrar Aluno</span>
         </a>
 
+        <!-- Funcionários -->
         <a mat-list-item routerLink="/funcionarios" routerLinkActive="active" class="menu-item">
-          <mat-icon>people</mat-icon>
+          <mat-icon>groups</mat-icon>
           <span>Funcionários</span>
         </a>
 
+        <!-- Cadastrar Funcionário -->
         <a mat-list-item routerLink="/cadastrar-funcionarios" routerLinkActive="active" class="menu-item">
-          <mat-icon>people</mat-icon>
-          <span>Cadastrar - Funcionários</span>
+          <mat-icon>badge</mat-icon>
+          <span>Cadastrar Funcionário</span>
         </a>
 
+        <!-- Usuários -->
         <a mat-list-item routerLink="/usuarios" routerLinkActive="active" class="menu-item">
-          <mat-icon>people</mat-icon>
+          <mat-icon>manage_accounts</mat-icon>
           <span>Usuários</span>
         </a>
 
+        <!-- Logs / Histórico -->
+        <a mat-list-item routerLink="/logs" routerLinkActive="active" class="menu-item">
+          <mat-icon>history</mat-icon>
+          <span>Logs do Sistema</span>
+        </a>
       </mat-nav-list>
     </mat-sidenav>
 
+    <!-- CONTEÚDO PRINCIPAL -->
     <mat-sidenav-content>
       <mat-toolbar color="primary" class="topbar">
         <button mat-icon-button (click)="sidenav.toggle()" class="menu-button" aria-label="Toggle menu">
           <mat-icon>menu</mat-icon>
         </button>
 
-        <span class="topbar-title">Painel de controle - Academia</span>
+        <span class="topbar-title">Painel de Controle - Academia</span>
         <span class="spacer"></span>
 
+        <!-- Menu do usuário -->
         <button mat-button [matMenuTriggerFor]="userMenu" style="color: #D4AF37">
           <mat-icon>account_circle</mat-icon>
           <span class="username">Patricia</span>
@@ -60,7 +74,7 @@
             <span>Perfil</span>
           </button>
           <button mat-menu-item (click)="logout()">
-            <mat-icon>exit_to_app</mat-icon>
+            <mat-icon>logout</mat-icon>
             <span>Sair</span>
           </button>
         </mat-menu>
@@ -73,7 +87,7 @@
   </mat-sidenav-container>
 </ng-container>
 
-<!-- Página de login isolada -->
+<!-- LOGIN -->
 <ng-container *ngIf="isLoginPage">
   <div class="login-container">
     <router-outlet></router-outlet>

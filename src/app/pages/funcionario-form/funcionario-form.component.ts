@@ -32,8 +32,8 @@ export class FuncionarioFormComponent {
   salvar() {
     if (this.funcionarioForm.valid) {
       this.funcionarioService.adicionarFuncionario(this.funcionarioForm.value);
-      this.logService.registrar('Cadastrou novo aluno', this.funcionarioForm.value.nome);
-      alert('Funcionario cadastrado com sucesso!');
+      this.logService.registrar('Cadastrou novo funcionário', this.funcionarioForm.value.nome);
+      alert('Funcionário cadastrado com sucesso!');
       this.funcionarioForm.reset({ ativo: true });
     }
   }
