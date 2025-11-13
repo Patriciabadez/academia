@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,7 +6,13 @@ import { Router } from '@angular/router';
   templateUrl: './cadastros.component.html',
   styleUrls: ['./cadastros.component.css']
 })
-export class CadastrosComponent {
+export class CadastrosComponent implements OnInit{
+    userTipo: string = '';
+
+  ngOnInit(): void {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.userTipo = user.tipo || '';
+  }
   constructor(private router: Router) {}
 
   abrirAlunos() {
