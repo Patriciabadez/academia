@@ -21,7 +21,7 @@ export class UsuariosService {
     const existentes = localStorage.getItem(this.storageKey);
     if (!existentes) {
       const base: Usuario[] = [
-        { id: 1, username: 'admin', email: 'admin@academia.com', password: '123', tipo: 'admin', ativo: true },
+        { id: 1, username: 'patricia', email: 'admin@academia.com', password: '123', tipo: 'admin', ativo: true },
         { id: 2, username: 'joao', email: 'joao@academia.com', password: '123', tipo: 'personal', ativo: true },
         { id: 3, username: 'maria', email: 'maria@academia.com', password: '123', tipo: 'recepcionista', ativo: true },
       ];

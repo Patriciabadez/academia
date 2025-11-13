@@ -8,7 +8,7 @@ import { Observable, of, throwError } from 'rxjs';
 export class LoginService {
    // Usuários simulados
   private usuariosFake = [
-    { username: 'admin', password: '123', email: 'admin@academia.com', tipo: 'admin' },
+    { username: 'patricia', password: '123', email: 'admin@academia.com', tipo: 'admin' },
     { username: 'joao', password: '123', email: 'joao@academia.com', tipo: 'personal' },
     { username: 'maria', password: '123', email: 'maria@academia.com', tipo: 'recepcionista' },
     { username: 'limpeza', password: '123', email: 'limpeza@academia.com', tipo: 'limpeza' },

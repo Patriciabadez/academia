@@ -69,9 +69,8 @@
         <!-- Menu do usuário -->
         <button mat-button [matMenuTriggerFor]="userMenu" style="color: #D4AF37">
           <mat-icon>account_circle</mat-icon>
-          <span class="username">Patricia</span>
+          <span class="username">{{ userNome }} - {{ userTipo | titlecase }}</span>
         </button>
-
         <mat-menu #userMenu="matMenu">
           <button mat-menu-item>
             <mat-icon>person</mat-icon>
