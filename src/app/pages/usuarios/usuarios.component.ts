@@ -22,10 +22,13 @@ export class UsuariosComponent {
 
   tipos = ['admin', 'personal', 'recepcionista', 'limpeza', 'aluno'];
 
+  /** 👇 Adiciona esta linha */
+  abrirFormulario: boolean = false;
+
   constructor(
     private usuariosService: UsuariosService,
     private messageService: MessageService,
-    private logService: LogService // 👈 injetamos aqui
+    private logService: LogService
   ) {}
 
   ngOnInit() {
@@ -53,7 +56,7 @@ export class UsuariosComponent {
         detail: 'Usuário cadastrado!',
       });
 
-      // 🪵 Aqui registramos o log
+      // 🪵 Registra log
       this.logService.registrar(
         'Cadastrou novo usuário',
         this.novoUsuario.username || 'Desconhecido'
@@ -61,8 +64,9 @@ export class UsuariosComponent {
 
       this.carregarUsuarios();
 
-      // limpa os campos
+      // limpa e fecha formulário
       this.novoUsuario = { username: '', email: '', password: '', tipo: 'aluno', ativo: true };
+      this.abrirFormulario = false;
     });
   }
 
@@ -74,10 +78,10 @@ export class UsuariosComponent {
         detail: 'Usuário excluído com sucesso!',
       });
 
-      // 🪵 Também registramos exclusão no log
+      // 🪵 Registra exclusão no log
       this.logService.registrar(
         `Excluiu usuário com ID ${id}`,
-        'Administrador' // ou o usuário logado futuramente
+        'Administrador'
       );
 
       this.carregarUsuarios();

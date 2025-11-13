@@ -132,6 +132,14 @@ th {
   font-size: 0.95rem;
   border-bottom: 3px solid #d4af37;
 }
+.full-width-table th {
+  background: linear-gradient(90deg, #222D5B, #2f3b8a);
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 14px 16px;
+  border-bottom: 3px solid #d4af37;
+}
 
 /* Linhas e células */
 td {
