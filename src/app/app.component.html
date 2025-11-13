@@ -15,37 +15,41 @@
 
       <mat-nav-list>
         <!-- Alunos -->
-        <a mat-list-item routerLink="/alunos" routerLinkActive="active" class="menu-item">
+        <a *ngIf="userTipo === 'personal' || userTipo === 'admin'" mat-list-item routerLink="/alunos"
+          routerLinkActive="active" class="menu-item">
           <mat-icon>fitness_center</mat-icon>
           <span>Alunos</span>
         </a>
 
         <!-- Cadastrar Aluno -->
-        <a mat-list-item routerLink="/cadastrar-alunos" routerLinkActive="active" class="menu-item">
+        <a *ngIf="userTipo === 'personal' || userTipo === 'admin'" mat-list-item routerLink="/cadastrar-alunos"
+          routerLinkActive="active" class="menu-item">
           <mat-icon>person_add</mat-icon>
           <span>Cadastrar Aluno</span>
         </a>
 
-        <!-- Funcionários -->
-        <a mat-list-item routerLink="/funcionarios" routerLinkActive="active" class="menu-item">
+        <!-- Funcionários (somente admin) -->
+        <a *ngIf="userTipo === 'admin'" mat-list-item routerLink="/funcionarios" routerLinkActive="active"
+          class="menu-item">
           <mat-icon>groups</mat-icon>
           <span>Funcionários</span>
         </a>
 
-        <!-- Cadastrar Funcionário -->
-        <a mat-list-item routerLink="/cadastrar-funcionarios" routerLinkActive="active" class="menu-item">
+        <a *ngIf="userTipo === 'admin'" mat-list-item routerLink="/cadastrar-funcionarios" routerLinkActive="active"
+          class="menu-item">
           <mat-icon>badge</mat-icon>
           <span>Cadastrar Funcionário</span>
         </a>
 
-        <!-- Usuários -->
-        <a mat-list-item routerLink="/usuarios" routerLinkActive="active" class="menu-item">
+        <!-- Usuários (somente admin) -->
+        <a *ngIf="userTipo === 'admin'" mat-list-item routerLink="/usuarios" routerLinkActive="active"
+          class="menu-item">
           <mat-icon>manage_accounts</mat-icon>
           <span>Usuários</span>
         </a>
 
-        <!-- Logs / Histórico -->
-        <a mat-list-item routerLink="/logs" routerLinkActive="active" class="menu-item">
+        <!-- Logs / Histórico (somente admin) -->
+        <a *ngIf="userTipo === 'admin'" mat-list-item routerLink="/logs" routerLinkActive="active" class="menu-item">
           <mat-icon>history</mat-icon>
           <span>Logs do Sistema</span>
         </a>

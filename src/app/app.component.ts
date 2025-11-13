@@ -9,18 +9,22 @@ import { filter } from 'rxjs';
 })
 export class AppComponent {
   isLoginPage = false;
-  title = 'academia';
-
+  userTipo: string = '';
 
   constructor(private router: Router) {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        // verifica se a rota é /login
         this.isLoginPage = event.urlAfterRedirects.includes('/login');
+
+        // Sempre que mudar a rota, pega o tipo do usuário
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        this.userTipo = user.tipo || '';
       });
   }
+
   logout() {
+    localStorage.removeItem('user');
     this.router.navigate(['/login']);
   }
 }
