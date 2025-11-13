@@ -27,6 +27,48 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Conteúdo existente do styles.css (temas, etc.) */
+
+/* --- CORREÇÃO DE LOGIN INVISÍVEL --- */
+
+/* 1. Força a cor do texto digitado */
+input.mat-input-element {
+  color: #fff !important;
+  caret-color: #f7c325 !important;
+}
+
+/* 2. Força a cor no Autocompletar/Autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #1b1b1b inset !important;
+  -webkit-text-fill-color: #fff !important;
+}
+/* Coloque isso no seu arquivo GLOBAL (styles.css ou styles.scss) */
+
+/* Força a cor do texto do input quando ele está dentro do componente de login */
+app-login .mat-input-element {
+    color: #fff !important;
+    caret-color: #f7c325 !important;
+}
+
+/* Força a cor do texto do input no Autocompletar quando ele está dentro do componente de login */
+app-login input:-webkit-autofill,
+app-login input:-webkit-autofill:hover,
+app-login input:-webkit-autofill:focus,
+app-login input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #1b1b1b inset !important;
+    -webkit-text-fill-color: #fff !important;
+}
