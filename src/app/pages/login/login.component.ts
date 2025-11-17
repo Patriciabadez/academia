@@ -1,77 +1,48 @@
-import { jwtDecode } from 'jwt-decode';
-import { MessageService } from 'primeng/api';
-import { Component, ViewEncapsulation } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../../services/authentication.service';
 import { LoginService } from '../../services/login.service';
-
-interface JwtPayload {
-  username: string;
-  email: string;
-}
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
-  // encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  isLoading: boolean = false;
-  username: string = '';
-  password: string = '';
-  loggedInUserEmail: string = '';
+
+  email = '';
+  senha = '';
   hide = true;
+  isLoading = false;
 
   constructor(
-    private authService: AuthenticationService,
     private loginService: LoginService,
-    private _snackBar: MatSnackBar,
     private router: Router,
-    private messageService: MessageService
+    private snack: MatSnackBar
   ) {}
 
   login() {
     this.isLoading = true;
-    if (!this.username || !this.password) {
-      this.messageService.add({
-        severity: 'warn',
-        summary: 'Atenção',
-        detail: 'Informe usuário e senha!',
-        life: 2000,
-        styleClass: 'custom-toast',
-      });
-      this.isLoading = false;
-      return;
-    }
-    this.loginService.login(this.username, this.password).subscribe(
-      (data) => {
-        this.authService.isChangeAutenticantion(true);
-        window.localStorage.setItem('token', data.token);
-        const decodedToken: JwtPayload = jwtDecode(data.token);
-        window.localStorage.setItem('user', JSON.stringify(decodedToken));
-        this.loggedInUserEmail = decodedToken.email;
-        this.router.navigate(['/home']);
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Sucesso',
-          detail: 'Login realizado com sucesso!',
-          life: 2000,
-          styleClass: 'custom-toast',
-        });
-      },
-      (error) => {
-        console.error('Erro ao fazer login:', error);
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Erro',
-          detail: 'Erro ao fazer login!',
-          life: 2000,
-          styleClass: 'custom-toast',
-        });
+
+    this.loginService.login(this.email, this.senha).subscribe({
+      next: (res) => {
         this.isLoading = false;
-      }
-    );
+
+        this.loginService.salvarLogin(res.token, res.user);
+
+        this.snack.open('Login realizado com sucesso!', 'OK', { duration: 2000 });
+
+        this.router.navigate(['/home']);
+      },
+      error: (err) => {
+        this.isLoading = false;
+
+        this.snack.open(
+          err.error?.error || 'Erro ao fazer login',
+          'OK',
+          { duration: 2500 }
+        );
+      },
+    });
   }
 }

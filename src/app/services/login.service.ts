@@ -1,48 +1,36 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class LoginService {
-   // Usuários simulados
-  private usuariosFake = [
-    { username: 'patricia', password: '123', email: 'admin@academia.com', tipo: 'admin' },
-    { username: 'joao', password: '123', email: 'joao@academia.com', tipo: 'personal' },
-    { username: 'maria', password: '123', email: 'maria@academia.com', tipo: 'recepcionista' },
-    { username: 'limpeza', password: '123', email: 'limpeza@academia.com', tipo: 'limpeza' },
-    { username: 'pedro', password: '123', email: 'pedro@academia.com', tipo: 'aluno' },
-  ];
 
-  constructor() {}
+  private API = environment.PATH_API + '/auth/login';
 
-  login(username: string, password: string): Observable<any> {
-    const usuario = this.usuariosFake.find(
-      (u) => u.username === username && u.password === password
-    );
+  constructor(private http: HttpClient) {}
 
-    if (usuario) {
-      // Gera um token fake com JWT (simulado)
-      const payload = {
-        username: usuario.username,
-        email: usuario.email,
-        tipo: usuario.tipo,
-        exp: Math.floor(Date.now() / 1000) + 3600 // expira em 1h
-      };
-      const token = this.fakeJwtEncode(payload);
-
-      return of ({ token });
-    } else {
-      return throwError(() => new Error('Usuário ou senha inválidos'));
-    }
+  login(email: string, senha: string): Observable<any> {
+    return this.http.post(this.API, { email, senha });
   }
 
-  // Função que cria um JWT fake (somente para simulação)
-  private fakeJwtEncode(payload: any): string {
-    const header = { alg: 'HS256', typ: 'JWT' };
-    const encode = (obj: any) => btoa(JSON.stringify(obj));
-    return `${encode(header)}.${encode(payload)}.fake-signature`;
+  salvarLogin(token: string, user: any) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(user));
   }
+
+  getUser() {
+    return JSON.parse(localStorage.getItem('user') || '{}');
+  }
+
+  estaLogado(): boolean {
+  const token = localStorage.getItem('token');
+  return !!token; // retorna true se existir token
 }
 
+  logout() {
+    localStorage.clear();
+  }
+}

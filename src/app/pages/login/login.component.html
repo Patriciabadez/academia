@@ -10,7 +10,7 @@
     <form (ngSubmit)="login()" autocomplete="off">
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Usuário</mat-label>
-        <input matInput [(ngModel)]="username" name="username"style="color: #fff !important; caret-color: #f7c325 !important;"/>
+        <input matInput [(ngModel)]="email" name="email"style="color: #fff !important; caret-color: #f7c325 !important;"/>
         <mat-icon matSuffix>person</mat-icon>
       </mat-form-field>
 
@@ -18,9 +18,9 @@
         <mat-label>Senha</mat-label>
         <input
           matInput
-          [type]="hide ? 'password' : 'text'"
-          [(ngModel)]="password"
-          name="password"
+          [type]="hide ? 'senha' : 'text'"
+          [(ngModel)]="senha"
+          name="senha"
           style="color: #fff !important; caret-color: #f7c325 !important;"
         />
         <button
