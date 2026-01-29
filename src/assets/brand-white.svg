@@ -1,0 +1,10 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- "Pro" em branco -->
+  <text x="10" y="45" font-family="Arial, sans-serif" font-size="36" font-weight="600" fill="white">Pro</text>
+
+  <!-- "Fit" em amarelo -->
+  <text x="90" y="45" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#FFB612">Fit</text>
+
+  <!-- Arco estilizado ao lado -->
+  <path d="M 165 25 Q 175 18 185 30 Q 175 42 165 35" stroke="#FFB612" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>
